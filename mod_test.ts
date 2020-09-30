@@ -1,4 +1,4 @@
-import { left, right } from "./mod.ts";
+import { isLeft, isRight, left, right } from "./mod.ts";
 import {
   assertEquals,
 } from "https://deno.land/std@0.63.0/testing/asserts.ts";
@@ -33,5 +33,29 @@ Deno.test("either either", () => {
   assertEquals(
     right<string, number>(10).either((l: string) => l + l, (r) => "" + r + r),
     "1010",
+  );
+});
+
+Deno.test("either isLeft", () => {
+  assertEquals(
+    isLeft(left<string, number>("hello")),
+    true,
+  );
+
+  assertEquals(
+    isLeft(right<string, number>(10)),
+    false,
+  );
+});
+
+Deno.test("either isRight", () => {
+  assertEquals(
+    isRight(left<string, number>("hello")),
+    false,
+  );
+
+  assertEquals(
+    isRight(right<string, number>(10)),
+    true,
   );
 });

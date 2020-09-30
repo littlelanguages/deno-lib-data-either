@@ -117,3 +117,9 @@ export function left<L, R>(l: L): Either<L, R> {
 export function right<L, R>(r: R): Either<L, R> {
   return new Right(r);
 }
+
+export const isLeft = <A, B>(e: Either<A, B>): boolean =>
+  e.either((_) => true, (_) => false);
+
+export const isRight = <A, B>(e: Either<A, B>): boolean =>
+  e.either((_) => false, (_) => true);
