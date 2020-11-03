@@ -1,7 +1,5 @@
 import { isLeft, isRight, left, right } from "./mod.ts";
-import {
-  assertEquals,
-} from "https://deno.land/std@0.68.0/testing/asserts.ts";
+import { assertEquals } from "https://deno.land/std@0.76.0/testing/asserts.ts";
 
 Deno.test("either map", () => {
   assertEquals(left<string, number>("oops").map((x) => x + x), left("oops"));
